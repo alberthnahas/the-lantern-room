@@ -5,17 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
+  <meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 }}">
+
+  <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+
+  <script>
+    /* Set theme before paint to avoid a flash of the wrong theme */
+    (function () {
+      try {
+        var saved = localStorage.getItem("lantern-theme");
+        var theme = saved || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
+  <div class="progress-bar"></div>
   <div class="lantern-glow"></div>
   <header class="site-header">
-    <a class="site-title" href="{{ '/' | relative_url }}">The Lantern Room</a>
-    <nav>
-      <a href="{{ '/' | relative_url }}">Chapters</a>
-      <a href="{{ '/about/' | relative_url }}">About</a>
-    </nav>
+    <a class="site-title" href="{{ '/' | relative_url }}"><span class="glyph">&#128161;</span> The Lantern Room</a>
+    <div class="header-controls">
+      <nav>
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>Chapters</a>
+        <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about/' %} class="active"{% endif %}>About</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </nav>
+      <div class="theme-toggle" role="group" aria-label="Theme">
+        <button type="button" data-theme="light" title="Light" aria-label="Light theme">&#9728;</button>
+        <button type="button" data-theme="sepia" title="Sepia" aria-label="Sepia theme">&#128220;</button>
+        <button type="button" data-theme="dark" title="Dark" aria-label="Dark theme">&#9789;</button>
+      </div>
+    </div>
   </header>
   <main>
     {{ content }}
@@ -23,5 +54,6 @@
   <footer class="site-footer">
     <p>The Lantern Room &middot; a 100-day story &middot; written by Alberth Nahas</p>
   </footer>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
