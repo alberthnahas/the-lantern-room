@@ -65,7 +65,7 @@
     try {
       var data = JSON.parse(raw);
       if (!data || !data.url) return;
-      card.querySelector(".title").textContent = "Day " + data.day + " — " + data.title;
+      card.querySelector(".title").textContent = "Chapter " + data.day + " — " + data.title;
       card.querySelector("a.resume-btn").setAttribute("href", data.url);
       card.classList.add("visible");
     } catch (e) { /* ignore malformed data */ }
