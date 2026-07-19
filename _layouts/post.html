@@ -22,7 +22,7 @@ layout: default
 
     {% if index > 0 %}
       {% assign prev_post = posts[index | minus: 1] %}
-      <a class="chapter-nav-link prev" href="{{ prev_post.url | relative_url }}">&larr; Day {{ prev_post.day }}</a>
+      <a class="chapter-nav-link prev" href="{{ prev_post.url | relative_url }}">&larr; Chapter {{ prev_post.day }}</a>
     {% else %}
       <span></span>
     {% endif %}
@@ -32,7 +32,7 @@ layout: default
     {% assign next_index = index | plus: 1 %}
     {% if next_index < posts.size %}
       {% assign next_post = posts[next_index] %}
-      <a class="chapter-nav-link next" href="{{ next_post.url | relative_url }}">Day {{ next_post.day }} &rarr;</a>
+      <a class="chapter-nav-link next" href="{{ next_post.url | relative_url }}">Chapter {{ next_post.day }} &rarr;</a>
     {% else %}
       <span></span>
     {% endif %}
