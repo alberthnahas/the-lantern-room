@@ -36,7 +36,7 @@ title: Chapters
   {% assign act_num = act.name | plus: 1 %}
   {% assign act_start = act.name | times: act_size | plus: 1 %}
   {% assign act_end = act_num | times: act_size %}
-  <p class="act-heading">Act {{ act_num }} &middot; Days {{ act_start }}&ndash;{{ act_end }}</p>
+  <p class="act-heading">Act {{ act_num }} &middot; Chapters {{ act_start }}&ndash;{{ act_end }}</p>
   <ol class="chapter-list">
     {% for post in act.items %}
     <li>
