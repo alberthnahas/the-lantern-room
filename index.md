@@ -41,7 +41,7 @@ title: Chapters
     {% for post in act.items %}
     <li>
       <a href="{{ post.url | relative_url }}">
-        <span class="day-num">Day {{ post.day }}</span>
+        <span class="day-num">Chapter {{ post.day }}</span>
         <span class="day-title">{{ post.chapter_title | default: post.title }}</span>
       </a>
     </li>
