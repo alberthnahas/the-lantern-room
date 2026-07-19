@@ -21,7 +21,7 @@ layout: default
     {% endfor %}
 
     {% if index > 0 %}
-      {% assign prev_post = posts[index | minus: 1] %}
+      {% assign prev_post = index | minus: 1 %}
       <a class="chapter-nav-link prev" href="{{ prev_post.url | relative_url }}">&larr; Chapter {{ prev_post.day }}</a>
     {% else %}
       <span></span>
