@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="chapter" data-day="{{ page.day }}" data-chapter-title="{{ page.chapter_title | default: page.title }}">
   <div class="chapter-meta">
-    <p class="chapter-eyebrow">Day {{ page.day }} of {{ site.total_days | default: 100 }}</p>
+    <p class="chapter-eyebrow">Chapter {{ page.day }} of {{ site.total_days | default: 100 }}</p>
     <p class="reading-time">{% assign words = content | number_of_words %}{% assign minutes = words | divided_by: 200 | plus: 1 %}{{ minutes }} min read</p>
   </div>
   <h1 class="chapter-title">{{ page.chapter_title | default: page.title }}</h1>
