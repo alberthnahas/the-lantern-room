@@ -1,0 +1,35 @@
+title: The Lantern Room
+description: >-
+  A serialized mystery. One chapter a day, for 100 days.
+  Detective Elena Vega investigates the death of Dr. Vivian Mercer
+  in Hartwell Bay.
+author: Alberth Nahas
+lang: en
+
+# GitHub Pages project site (repo: the-lantern-room)
+baseurl: "/the-lantern-room"
+url: "https://alberthnahas.github.io"
+
+markdown: kramdown
+permalink: /day/:title/
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
